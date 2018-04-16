@@ -5,9 +5,14 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.text.format.DateFormat
 
 import kotlinx.android.synthetic.main.activity_main.*
+import org.json.JSONObject
 import java.net.URL
+import java.util.*
+import java.util.zip.DataFormatException
 
 class MainActivity : AppCompatActivity() {
 
@@ -27,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 //                "Seg, Mai 30 - Pós-apocalipse - 15°C / 10°C")
 
     inner class  BuscarClimaTask : AsyncTask <URL, Void, String> () {
+        override fun onPreExecute() {
+            exibirProgressBar()
+        }
+
         override fun doInBackground(vararg params: URL?): String? {
             try {
                 var url = params[0]
@@ -40,7 +49,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPostExecute(result: String?) {
-                dados_clima.text = result
+            if (result == null) {
+                exibirMensagemErro()
+            }else{
+                json(result)
+                exibirResultado()
+            }
+        }
+
+        fun json (result : String?){
+
+            val json = JSONObject(result)
+            val lista = json.getJSONArray("list")
+            for (i in 0 until lista.length()){
+                val lista1 = lista.getJSONObject(i)
+                val dataLong = lista1.getString("dt")
+                val data = converterData (dataLong)
+                val main = lista1.getJSONObject("main")
+                val temp = main.getString("temp")
+                val humidity = main.getString("humidity")
+                val clima = lista1.getJSONArray("weather")
+                val clima1 = clima.getJSONObject(0)
+                val desc = clima1.getString("description")
+
+                dados_clima.append("Data $data \n" +
+                                    "Temperatura $temp \n" +
+                                    "Umidade $humidity \n" +
+                                    "Clima $desc \n\n\n")
+            }
+        }
+
+        fun converterData(data: String):CharSequence?{
+            val dataHoraMilisegundos: Long = (java.lang.Long.valueOf(data)) * 1000
+            val dataHora = Date(dataHoraMilisegundos)
+            return DateFormat.format("dd/MM/yyyy HH:mm", dataHora)
         }
     }
 
@@ -77,5 +119,24 @@ class MainActivity : AppCompatActivity() {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+     fun exibirResultado(){
+        dados_clima.visibility = View.VISIBLE
+        mensagem_erro.visibility = View.INVISIBLE
+        pb_aguarde.visibility = View.INVISIBLE
+
+    }
+
+    fun exibirMensagemErro(){
+        dados_clima.visibility = View.INVISIBLE
+        mensagem_erro.visibility = View.VISIBLE
+        pb_aguarde.visibility = View.INVISIBLE
+    }
+
+    fun exibirProgressBar(){
+        dados_clima.visibility = View.INVISIBLE
+        mensagem_erro.visibility = View.INVISIBLE
+        pb_aguarde.visibility = View.VISIBLE
     }
 }

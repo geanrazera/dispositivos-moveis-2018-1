@@ -87,6 +87,8 @@
     <string name="condicao_962">Furacão</string>
 
     <string name="condicao_desconhecida">Desconhecido (<xliff:g id="condicaoId">%1$d</xliff:g>)</string>
-    
+
     <string name="acao_atualizar">Atualizar</string>
+    <string name="mensagem_erro">Não foi possível obter os dados do clima, tente novamente</string>
+
 </resources>
