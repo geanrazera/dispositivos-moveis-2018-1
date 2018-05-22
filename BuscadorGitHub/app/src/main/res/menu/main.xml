@@ -9,4 +9,11 @@
         app:showAsAction="ifRoom"
         android:title="@string/buscar"
         />
+
+    <item
+        android:id="@+id/action_configuracoes"
+        android:orderInCategory="2"
+        app:showAsAction="never"
+        android:title="Configurações"
+        />
 </menu>
