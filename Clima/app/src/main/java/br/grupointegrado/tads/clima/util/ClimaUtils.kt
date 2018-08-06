@@ -1,7 +1,8 @@
-package br.grupointegrado.tads.clima
+package br.grupointegrado.tads.clima.util
 
 import android.content.Context
 import android.util.Log
+import br.grupointegrado.tads.clima.dados.ClimaPreferencias
 import br.grupointegrado.tads.clima.R
 
 

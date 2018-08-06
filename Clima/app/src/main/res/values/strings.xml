@@ -1,13 +1,35 @@
 <resources xmlns:xliff="http://schemas.android.com/apk/res-auto">
     <string name="app_name">Clima</string>
-    
+
+    <string name="acao_atualizar">Atualizar</string>
+    <string name="mensagem_erro">Não foi possível obter os dados do clima, tente novamente</string>
+    <string name="acao_compartilhar">Compartilhar</string>
+    <string name="acao_mapa">Mapa</string>
+    <string name="acao_configuracao">Configuração</string>
+
     <string name="hoje">Hoje</string>
 
     <string name="amanha">Amanhã</string>
-    
+
     <string name="formata_data_completa">
         <xliff:g id="mes">%1$s</xliff:g>, <xliff:g id="dia">%2$s</xliff:g>
     </string>
+
+    <!-- - - - - - - - - - - - - - - -->
+    <!--        Preferências         -->
+    <!-- - - - - - - - - - - - - - - -->
+
+    <string name="pref_local">local</string>
+    <string name="pref_local_titulo">Localização</string>
+    <string name="pref_local_padrao">Campo Mourão - PR</string>
+
+    <string name="pref_unidade">unidades</string>
+    <string name="pref_unidade_titulo">Unidade de Temperatura</string>
+    <string name="pref_unidade_padrao">@string/pref_unidade_metrico_valor</string>
+    <string name="pref_unidade_metrico_titulo">Métrico</string>
+    <string name="pref_unidade_imperial_titulo">Imperial</string>
+    <string name="pref_unidade_metrico_valor">metrico</string>
+    <string name="pref_unidade_imperial_valor">Imperial</string>
 
     <!-- - - - - - - - - - - - - - - -->
     <!--     Usado por ClimaUtils    -->
@@ -88,7 +110,6 @@
 
     <string name="condicao_desconhecida">Desconhecido (<xliff:g id="condicaoId">%1$d</xliff:g>)</string>
 
-    <string name="acao_atualizar">Atualizar</string>
-    <string name="mensagem_erro">Não foi possível obter os dados do clima, tente novamente</string>
+
 
 </resources>

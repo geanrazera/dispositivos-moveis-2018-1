@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin"
+    tools:context=".TarefaActivity">
+
+    <EditText
+        android:id="@+id/ed_titulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/titulo_tarefa_hint"
+        android:inputType="textPersonName|textCapWords"
+        android:maxLength="50"
+        android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
+
+    <EditText
+        android:id="@+id/ed_descricao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/descricao_tarefa_hint"
+        android:inputType="textMultiLine"
+        android:maxLength="500"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+</LinearLayout>

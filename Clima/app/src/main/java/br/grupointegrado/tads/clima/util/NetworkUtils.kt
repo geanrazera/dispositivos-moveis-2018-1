@@ -1,8 +1,7 @@
-package br.grupointegrado.tads.clima
+package br.grupointegrado.tads.clima.util
 
 import android.net.Uri
 import android.util.Log
-import java.io.IOException
 import java.io.InputStream
 import java.net.HttpURLConnection
 import java.net.MalformedURLException

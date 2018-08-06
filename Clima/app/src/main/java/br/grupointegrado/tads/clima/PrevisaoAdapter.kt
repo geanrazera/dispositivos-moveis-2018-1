@@ -15,43 +15,61 @@ import android.widget.TextView
 class PrevisaoAdapter : RecyclerView.Adapter<PrevisaoAdapter.PrevisaoViewHolder> {
 
     private var dadosClima: Array<String?>?
+    private var itemClickListener: PrevisaoItemClickListener
 
-    constructor(dadosClima: Array<String?>?){
+
+    constructor(dadosClima: Array<String?>?, itemClickListener: PrevisaoItemClickListener) {
         this.dadosClima = dadosClima
+        this.itemClickListener = itemClickListener;
     }
 
     inner class PrevisaoViewHolder : RecyclerView.ViewHolder {
 
-        val tvDadosPrevisao : TextView?
+        val tvDadosPrevisao: TextView
 
-        constructor(itemView: View?): super(itemView){
-            tvDadosPrevisao = itemView?.findViewById(R.id.tv_dados_previsao)
+        constructor(itemView: View) : super(itemView) {
+            tvDadosPrevisao = itemView.findViewById(R.id.tv_dados_previsao)
+
+            itemView.setOnClickListener({
+                itemClickListener.onItemClick(adapterPosition)
+            })
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): PrevisaoViewHolder {
-        val previsaoListaItem = LayoutInflater.from(parent?.context).inflate(R.layout.previsao_lista_item, parent, false)
-        val previsaoViewHolder = PrevisaoViewHolder(previsaoListaItem)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrevisaoViewHolder {
+        val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.previsao_lista_item, parent, false)
 
-        return previsaoViewHolder
+        val viewHolder = PrevisaoViewHolder(view)
+
+        return viewHolder
     }
 
-    override fun onBindViewHolder(holder: PrevisaoViewHolder?, position: Int) {
-        val numero = dadosClima?.get(position)
-        holder?.tvDadosPrevisao?.text = numero.toString()
+    override fun onBindViewHolder(holder: PrevisaoViewHolder, position: Int) {
+        val previsao = dadosClima?.get(position)
+        holder.tvDadosPrevisao.text = previsao
     }
+
 
     override fun getItemCount(): Int {
-        if (dadosClima == null){
-            return 0
-        } else {
-            return dadosClima!!.size
+        val dados = dadosClima
+        if (dados != null) {
+            return dados.size
         }
+        return 0
     }
 
-    fun setDadosClima(dados: Array<String?>?){
-        dadosClima = dados
+    fun setDadosClima(dadosClima: Array<String?>?) {
+        this.dadosClima = dadosClima
         notifyDataSetChanged()
+    }
+
+    fun getDadosClima() : Array<String?>? {
+        return dadosClima
+    }
+
+    interface PrevisaoItemClickListener {
+        fun onItemClick(index: Int)
     }
 
 

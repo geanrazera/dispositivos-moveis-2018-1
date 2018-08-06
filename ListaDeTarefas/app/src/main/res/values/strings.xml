@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Lista de Tarefas</string>
+    <string name="activity_tarefa">Tarefa</string>
+
+    <string name="titulo_tarefa_hint">Título</string>
+    <string name="descricao_tarefa_hint">Descrição</string>
+    <string name="add_button_text">Adicionar</string>
+    <string name="menu_adicionar">Adicionar</string>
+    <string name="menu_salvar">Salvar</string>
+
+    <string name="titulo_padrao">Estudar para a prova de Android</string>
+    <string name="id_padrao">\?</string>
+    <string name="data_padrao">dd/mm/aaaa</string>
+
+</resources>

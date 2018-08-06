@@ -1,4 +1,4 @@
-package br.grupointegrado.tads.clima
+package br.grupointegrado.tads.clima.util
 
 import android.content.Context
 import android.util.Log

@@ -1,4 +1,4 @@
-package br.grupointegrado.tads.clima
+package br.grupointegrado.tads.clima.dados
 import android.content.Context
 
 class ClimaPreferencias {
